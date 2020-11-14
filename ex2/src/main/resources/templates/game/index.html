@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Game Community</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+          .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+
+          #content {
+            height: 10rem;
+          }
+
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="/css/navbar-top.css" rel="stylesheet">
+    </head>
+    <body>
+        <main role="main" class="container mt-3">
+            <div class="jumbotron">
+                <h2>가위바위보 게임</h2>
+                <form method="POST" action="/game">
+                    <div class="form-row">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="input" id="inputScissors" value="1" checked>
+                            <label class="form-check-label" for="inputScissors">가위</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="input" id="inputRock" value="2">
+                            <label class="form-check-label" for="inputRock">바위</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="input" id="inputPaper" value="3">
+                            <label class="form-check-label" for="inputPaper">보</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-primary">결과는?</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/jquery.slim.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Game Community</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+          .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+
+          #content {
+            height: 10rem;
+          }
+
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="/css/navbar-top.css" rel="stylesheet">
+    </head>
+    <body>
+        <main role="main" class="container mt-3">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col">
+                        <h2>가위바위보 결과!</h2>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mb-2">
+                    <div class="col">
+                        <h4>사용자: {{user}} vs 컴퓨터: {{computer}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>{{result}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/game" role="button" class="btn btn-primary">Retry</a>
+            <a href="/" role="button" class="btn btn-link">Go Main</a>
+        </main>
+
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/jquery.slim.min.js"></script>
+    </body>
+</html>

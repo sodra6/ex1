@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Game Community</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      #content {
+        height: 10rem;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/navbar-top.css" rel="stylesheet">
+  </head>
+  <body>
+    <main role="main" class="container mt-3">
+      <div class="jumbotron">
+        <h2>게시글 쓰기</h2>
+        <form method="POST" action="/board">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="title">제목</label>
+              <input type="text" name="title" class="form-control" id="title" required placeholder="제목을 입력하세요.">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="password">비밀번호</label>
+              <input type="password" name="password" class="form-control" id="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" placeholder="내용을 입력하세요."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a href="/" role="button" class="btn btn-link">Go Main</a>
+        </form>
+      </div>
+    </main>
+    <hr />
+
+    <main role="main" class="container mt-3">
+      <h2 class="mt-1">게시글 목록</h2>
+      {{#boardList}}
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">{{id}}</th>
+          <td><a href="/board/{{id}}" target="_self">{{title}}</a></td>
+        </tr>
+        </tbody>
+      </table>
+      {{/boardList}}
+      {{^boardList}}
+      <h4 class="text-center">게시글이 없습니다.</h4>
+      {{/boardList}}
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.slim.min.js"></script>
+  </body>
+</html>
