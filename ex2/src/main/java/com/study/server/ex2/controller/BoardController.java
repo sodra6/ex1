@@ -16,6 +16,8 @@ import java.util.List;
 public class BoardController {
     @Autowired
     private BoardRepository repository;
+    @Autowired
+    private BoardService service;
 
     @GetMapping("")
     public ModelAndView getHomeForModel() {
@@ -82,9 +84,9 @@ public class BoardController {
     public String deleteBoardItem(@PathVariable("id") Integer boardId) {
     	System.out.println("D E L E T E");
         String redirectUrl = "redirect:/board";
-        BoardService boardService = new BoardService();
+//        BoardService boardService = new BoardService();
         
-        boardService.deletePost(boardId);
+        service.deleteBoard(boardId);
         
         
         return redirectUrl;
@@ -95,17 +97,33 @@ public class BoardController {
      * 2. BoardService 클래스에 update() 메소드 작성
      * 3. 작성된 update()를 controller에서 호출
      * 4. controller에 호출된 update()를 통해 /{id}에 replace로 요청오는것을 처리함
-     * 5. domain에 있는 tablle의 데이터를 수정
+     * 5. domain에 있는 table의 데이터를 수정
      * 6. 글목록에서 수정
-     * 
      */
-    public ModelAndView updateBoardItem(@PathVariable("id") Integer boardId) {
-    	// Update item of boards
-        Board board = repository.getOne(boardId);
-
-        ModelAndView result = new ModelAndView("board/item");
-        result.getModel().replace("boardItem", board);
-        return result;
+    @GetMapping("/{id}/update")
+    public ModelAndView getUpdate(@PathVariable("id") Integer boardId) {
+    	
+    	Board saveBoard = service.findOneById(boardId);
+    	
+    	//board의 updateForm을 보여줌
+    	ModelAndView response = new ModelAndView("board/updateForm");
+    	//이름 update로 연결
+    	response.getModel().put("update", saveBoard);
+    	//응답
+    	return response;
+    }
+    
+    @PostMapping("/{id}/updateForm")
+    public String postUpdateBoard(@PathVariable("id") Integer boardId, @ModelAttribute Board updateBoard) {
+    	service.updateBoard(boardId, updateBoard);
+    	
+    	//방법1) 수정된 데이터를 새로 출력해서 응답하는 방법
+//    	ModelAndView response = new ModelAndView(viewName: "board/index");
+//    	response.getModel().put("board", resultBoard);
+//    	return response;
+    	
+    	//방법2) 기존에 게시글을 조회하는 페이지로 이동하는 방법
+    	return "redirect:/board/"+boardId;
     }
     
 }

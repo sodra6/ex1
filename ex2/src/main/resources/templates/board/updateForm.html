@@ -38,16 +38,16 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="title">제목</label>
-              <input type="text" name="title" class="form-control" id="title" required placeholder="제목을 입력하세요.">
+              <input type="text" name="title" class="form-control" id="title"  value="{{boardItem.title}}" >
             </div>
             <div class="form-group col-md-6">
               <label for="password">비밀번호</label>
-              <input type="password" name="password" class="form-control" id="password">
+              <input type="password" name="password" class="form-control" id="password" value="{{boardItem.password}}">
             </div>
           </div>
           <div class="form-group">
             <label for="content">내용</label>
-            <textarea class="form-control" name="content" id="content" placeholder="내용을 입력하세요."></textarea>
+            <textarea class="form-control" name="content" id="content" value="{{boardItem.content}}"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Save</button>
           <a href="/" role="button" class="btn btn-link">Go Main</a>
@@ -65,8 +65,6 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
         </tr>
-        
-        
         </thead>
         <tbody>
         <tr>
@@ -75,9 +73,6 @@
         </tr>
         </tbody>
       </table>
-      {{/boardList}}
-      {{^boardList}}
-      <h4 class="text-center">게시글이 없습니다.</h4>
       {{/boardList}}
     </main>
 

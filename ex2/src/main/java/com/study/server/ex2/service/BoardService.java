@@ -1,5 +1,6 @@
 package com.study.server.ex2.service;
 
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,17 +16,27 @@ public class BoardService {
 	private BoardRepository boardRepository;
 	
  
-	public void deletePost(Integer id) {
+	public void deleteBoard(Integer id) {
         boardRepository.deleteById(id);
     }
+	public Board findOneById(Integer boardId) {
+		Board board = null;
+		boardRepository.getOne(boardId);
+		
+		return board;
+	}
 	
-	public ModelAndView update(Integer id) {
-		ModelAndView modelAndView =null;
+	public Board updateBoard(Integer boardId, Board updateBoard) {
+		//게시글 id에 맞는 데이터 조회
+		Board saveBoard = boardRepository.getOne(boardId);
 		
-		boardRepository.getOne(id);
-		modelAndView.getModel().replace("boardItem", board);
+		//조회한 데이터를 수정 및 저장
+		saveBoard.setTitle(updateBoard.getTitle());
+		saveBoard.setPassword(updateBoard.getPassword());
+		saveBoard.setContent(updateBoard.getContent());
 		
-		return modelAndView;
+		//수정된 데이터를응답
+		return saveBoard;
 	}
 	
 }
